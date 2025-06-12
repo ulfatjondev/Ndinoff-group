@@ -7,10 +7,10 @@ export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${api}/order/create/`, orderData, {
-        withCredentials: true,
+      const response = await axios.post(`${api}/order/create`, orderData, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept :'application/json'
         }
       });
       return response.data;

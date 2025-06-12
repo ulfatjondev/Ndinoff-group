@@ -6,12 +6,12 @@ const api = import.meta.env.VITE_API;
 export const sendOffer = createAsyncThunk("offer/send", async (data, { rejectWithValue }) => {
   try {
     const response = await axios.post(
-      `${api}/offer/create/`, 
+      `${api}/offer/create`, 
       data,
       {
-        withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
+          Accept :'application/json'
         }
       }
     );

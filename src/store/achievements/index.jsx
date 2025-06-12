@@ -9,9 +9,9 @@ export const getAchievement = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API}/achievements`,{
-        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept :'application/json'
         }
       });
       return response.data;

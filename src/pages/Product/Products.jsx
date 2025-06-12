@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../store/product";
 import { createOrder } from "../../store/order";
 import { useTranslation } from "react-i18next";
-import AboutVideo from "../../components/About.components/AboutVideo";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Spin, Modal, Input, message as AntMessage } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -27,8 +26,6 @@ const Products = () => {
   const [phone, setPhone] = useState("+998");
   const [userMessage, setUserMessage] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
-
-  const videoUrl = "https://www.youtube.com/watch?v=DttV5GCdEMc";
 
   useEffect(() => {
     dispatch(getProduct());
@@ -211,8 +208,6 @@ const Products = () => {
           </div>
         </Modal>
       </div>
-
-      <AboutVideo videoUrl={videoUrl} />
     </>
   );
 };

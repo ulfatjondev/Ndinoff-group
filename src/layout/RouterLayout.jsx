@@ -2,8 +2,10 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import MediaNavbar from "../components/navbar/MediaNavbar";
 import { RxPinTop } from "react-icons/rx";
-import { FaTelegram, FaInstagram, FaFacebook, FaTelegramPlane } from "react-icons/fa";
+import { FaTelegram, FaInstagram, FaTelegramPlane } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
+import { t } from "i18next";
 
 const RouterLayout = () => {
   const location = useLocation();
@@ -38,11 +40,11 @@ const RouterLayout = () => {
             <div className="container mx-auto flex items-center flex-col lg:flex-row gap-10 justify-between">
               <div className="flex items-center max-md:flex-col gap-10 max-md:gap-5">
                 <img src={logo} alt="logo" className="w-[350px] max-md:w-[250px]" />
-                <p className="text-[#fff]">
-                  Lorem, ipsum dolor sit amet consectetur <br /> adipisicing elit.
-                  Iure, odio! <br /> Quaerat a placeat accusantium distinctio <br />
-                  ducimus odit, sit atque harum.
-                </p>
+                <div className="flex flex-col gap-3">
+                  <p className="text-[#fff] font-bold">{t("Global.footer_title")}</p>
+                  <p className="text-[#fff]">{t("Global.footer_month")}</p>
+                  <p className="text-[#fff]">{t("Global.footer_date")}</p>
+                </div>
               </div>
               <a
                 href="#navbar"
@@ -50,26 +52,29 @@ const RouterLayout = () => {
               >
                 <RxPinTop />
               </a>
-              <ul className="flex justify-between items-center flex-wrap gap-7 text-[#fff]">
-                <li><a href="#" className="text-[20px]"><FaTelegram /></a></li>
-                <li><a href="#" className="text-[20px]"><FaInstagram /></a></li>
-                <li><a href="#" className="text-[20px]"><FaFacebook /></a></li>
-                <li>
-                  <a href="#" className="text-[20px] flex items-center gap-2">
-                    <IoCall /> +998 90 000 00 00
-                  </a>
-                </li>
-              </ul>
+              <div className="flex flex-col gap-3">
+                <p className="text-[#fff] text-md">{t('Global.location')}</p>
+                <ul className="flex justify-between items-center flex-wrap gap-5 text-[#fff]">
+                  <li><a href="https://t.me/NDINOFFGROUP" target="_black" className="text-[23px]"><FaTelegram /></a></li>
+                  <li><a href="https://instagram.com/NDINOFFGROUP" target="_black" className="text-[23px]"><FaInstagram /></a></li>
+                  <li><a href="ndinoffgroup@mail.ru" target="_black" className="text-[25px]"><MdEmail /></a></li>
+                  <li>
+                    <a href={`tel: +998781138113`} className="text-[20px] flex items-center gap-2">
+                      <IoCall /> +998 (78) 113-81-13
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className="container mx-auto border-t-2 my-5">
               <p className="text-center text-[#fff] pt-[50px]">
-                © {year} ndinoff.uz Barcha huquqlar himoyalangan!
+                © {year} {t('Global.footer-footer')}
               </p>
             </div>
           </footer>
 
           <a 
-            href="https://t.me/Ulfatjon19" 
+            href="https://t.me/NDINOFFGROUP" 
             className="fixed bottom-10 max-md:bottom-8 right-10 max-md:right-5 z-50 bg-white shadow-xl rounded-[50%] cursor-pointer flex items-center justify-center border border-gray-200 p-5 max-md:p-3"
             target="_blank"
           > 

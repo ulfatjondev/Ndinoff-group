@@ -9,9 +9,9 @@ export const getCommentaries = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API}/commentaries`, {
-        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept :'application/json'
         }
       });
       return response.data;

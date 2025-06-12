@@ -3,7 +3,7 @@ import { Input, Spin, Alert } from "antd";
 import { useTranslation } from "react-i18next";
 import { message as antdMessage } from "antd";
 import { useDispatch } from "react-redux";
-import { sendOffer } from "../../store/offer"; // Redux'dan import
+import { sendOffer } from "../../store/offer";
 
 const { TextArea } = Input;
 

@@ -36,25 +36,23 @@
     "more":"Ko'proq",
     "type":"Turi",
     "rating":"reyting",
-    "composition":"Mahsulot tarkibi"
+    "composition":"Mahsulot tarkibi",
+    "footer_title":"Ish vaqti:",
+    "footer_month":"Dushanba–Juma",
+    "footer_date":"09:00–18:00",
+    "location":"Toshkent shahri, Olmazor tumani, Massiv Yunusov 16A",
+    "footer-footer":"ndinoff.uz Barcha huquqlar himoyalangan!"
   },
   "AboutComponents": {
     "heading": "Biz haqimizda",
     "title": "Biz insonlarga salomatlik ulashamiz!",
-    "description": " Lorem ipsum dolor sit amet consectetur. Rutrum sit quisqu varius interdum dictumst id.",
-    "main_title": "Alkimyogar mijozlar foydasini o'ylaydi",
-    "main_description": "lkimyogar Farm Kompaniyasi Kanada nanotexnologiyalar asosida yuqori sifatli kolloid minerallar hamda dorivor o’simliklardan tayyorlangan shifobaxsh ekstraktlar ishlab chiqarish bilan shug’ullanadi. Ekstraktlar gidrolat usulida bo’lib, MDX davlatlari ichida ularni iste’mol uchun chiqargan ilk kompaniya hisoblanadi! Korxona 2019-yilda tashkil topgan bo’lib, mana shu qisqa vaqt mobaynida 20 dan ortiq mahsulot assortimenti hamdan 5000 dan ortiq o’zining mamnun mijozlariga ega. Kompaniya sifatli, tabiiy hamda hamyonbob mahsulotlar ishlab chiqarish asosida millatning salomatligiga hissa qo’shishni o’z oldiga maqsad qilib qo’ygan.",
-    "number_title": "Xorijiy va mahalliy ilmiy- tadqiqot markazlari bilan hamkorlik!",
-    "number_title1": "Doimiy mamnun iste'molchilar",
-    "number_title2": "Shifobaxsh mahsulotlar assortimenti",
+    "description": "NDINOFF Group – tabiiy, samarali va ilmiy asoslangan kosmetik vositalar ishlab chiqaruvchi kompaniya. Biz mijozlarimizga sog‘lom teri, ishonchli natija va sifatli mahsulotlar orqali xizmat qilamiz.",
+    "main_title": "Ndinoff mijozlar foydasini o'ylaydi",
+    "main_description": "NDINOFF Group – 2019-yildan beri go‘zallik va salomatlik yo‘lida faoliyat yuritayotgan innovatsion brenddir. Mahsulotlarimiz yuqori sifatli, xalqaro standartlarga javob beradi va mutaxassislar tavsiyasiga asoslanadi.",
+    "number_title": "ilmiy markazlar bilan hamkorlik",
+    "number_title1": "doimiy mijoz",
+    "number_title2": "assortimentdagi mahsulot",
     "hamkorlar": "Hamkorlar"
-  },
-  "category": {
-    "imunitet": "Imunitet",
-    "erkaklar": "Erkaklar",
-    "ayollar": "Ayollar",
-    "bolalar": "Bolalar",
-    "keksalar": "Keksalar"
   },
   "register": {
     "title": "Biz bilan bog'laning",

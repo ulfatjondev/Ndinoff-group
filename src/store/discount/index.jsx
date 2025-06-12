@@ -8,9 +8,9 @@ export const getDiscount = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API}/discount-pills`,{
-        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept :'application/json'
         }
       });
       return response.data;
