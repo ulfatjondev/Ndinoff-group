@@ -5,11 +5,11 @@ import { RxPinTop } from "react-icons/rx";
 import { FaTelegram, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const RouterLayout = () => {
   const location = useLocation();
-
+  const {t} = useTranslation();
   // Ushbu sahifalarda Navbar va Footer ko'rinmasin
   const hiddenRoutes = ["/login", "/register", "/admin", "/404"];
   const hideLayout = hiddenRoutes.includes(location.pathname);

@@ -8,7 +8,6 @@ import { createOrder } from "../../store/order";
 import { Spin, Modal, Input, message as AntMessage } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { t } from "i18next";
 const { TextArea } = Input;
 
 const decodeHTML = (html) => {
@@ -18,7 +17,7 @@ const decodeHTML = (html) => {
 };
 
 const DataPage = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const dispatch = useDispatch();
   const { pill, status, error } = useSelector((state) => state.pills);
