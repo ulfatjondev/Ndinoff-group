@@ -7,7 +7,7 @@ export const getDiscount = createAsyncThunk(
   "discount/getDiscount",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API}/discount-pills`,{
+      const response = await axios.get(`${API}/discount-pills/`,{
         headers: {
           'Content-Type': 'application/json',
           Accept :'application/json'
@@ -35,7 +35,7 @@ const discountSlice = createSlice({
       })
       .addCase(getDiscount.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.doctor = action.payload;
+        state.discount = action.payload;
       })
       .addCase(getDiscount.rejected, (state, action) => {
         state.status = "failed";

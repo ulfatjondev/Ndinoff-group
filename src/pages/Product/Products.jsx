@@ -110,7 +110,7 @@ const Products = () => {
           {products.map((product) => (
             <div key={product.id}>
               <div className="border p-5 rounded-md flex justify-center items-center flex-col">
-                <img src={product.picture} className="w-[150px] h-[100px]" alt={product.name} />
+                <img src={product.picture} className="w-[150px] h-[120px] object-contain hover:scale-110 transition-all duration-300" alt={product.name} />
                 <h1 className="text-xl my-2 font-semibold">
                   {i18n.language === "uz"
                     ? product.name_uz
@@ -150,8 +150,8 @@ const Products = () => {
           <div className="flex max-md:flex-col items-center justify-center gap-10 p-10">
             {selectedProduct && (
               <div className="w-[450px] max-md:w-[80vw] flex flex-col items-center justify-center">
-                <img src={selectedProduct.picture} alt={selectedProduct.name} className="w-[60%] object-cover" />
-                <h1 className="mt-3 text-[20px] font-[500]">
+                <img src={selectedProduct.picture} alt={selectedProduct.name} className="w-[60%] object-contain" />
+                <h1 className="mt-3 text-[20px] font-semibold">
                   {i18n.language === "uz"
                     ? selectedProduct.name_uz
                     : i18n.language === "ru"
@@ -159,15 +159,15 @@ const Products = () => {
                     : selectedProduct.name_en
                   }
                 </h1>
-                <p className="py-2"><strong>Narxi:</strong> {selectedProduct.price} {t("product.productSena")}</p>
-                <p className="w-[90%]">
+                <p className="py-2"><strong>{t("product.price")}:</strong> {selectedProduct.price} {t("product.productSena")}</p>
+                <p className="w-[90%] line-clamp-3">
                 {
                   i18n.language === "uz"
-                  ? selectedProduct.information_uz.slice(0, 100)
+                  ? selectedProduct.body_uz
                   : i18n.language === "ru"
-                  ? selectedProduct.information_ru.slice(0, 100)
-                  : selectedProduct.information_en.slice(0, 100)
-                }...
+                  ? selectedProduct.body_ru
+                  : selectedProduct.body_en
+                }
               </p>
               </div>
             )}

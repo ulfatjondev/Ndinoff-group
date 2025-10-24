@@ -10,7 +10,7 @@
     "product": "Mahsulotlar",
     "feedback":"feedback",
     "news": "Yangiliklar",
-    "doc": "Doctorlar",
+    "doc": "Doktorlar",
     "cart":"Savat"
   },
   "doctors": {
@@ -25,8 +25,8 @@
     "sena": "uzs",
     "global": "Ommabop",
     "reacting": "Reytingi yuqori",
-    "productSena": "sum",
-    "price":"narxi"
+    "productSena": "So'm",
+    "price":"Narxi"
   },
   "customer": {
     "name": "Mijozlar fikri"
@@ -68,11 +68,29 @@
     "title": "Manzilimiz"
   },
   "purchase": {
-    "purchase":"sotib olish"
+    "purchase":"Xarid qilish"
   },
   "news": {
     "new":"Yutuqlar",
     "discount":"Chegirmalar",
     "null":"Hozircha chegirmadagi mahsulotlar mavjud emas!"
+  },
+  "doctor_page":{
+    "title":"Tibbiyot mutaxassislari ishonchi — biz uchun eng katta qadriyat.",
+    "desc_1":"“Ndinoff” mahsulotlari o‘zining tabiiy tarkibi, sifatli formulalari va amaliy natijalari bilan tibbiyot sohasi vakillari e’tiborini qozongan.",
+    "desc_2":"Turli yo‘nalishlarda faoliyat yuritayotgan shifokorlar mahsulotlarimizdan foydalangan bemorlarning holatini kuzatib, ularning ijobiy o‘zgarishlarini qayd etishgan.",
+    "desc_3":"Quyida keltirilgan mutaxassislar — o‘z ishiga sadoqatli, tajribali va malakali shifokorlar bo‘lib, ular “Ndinoff” mahsulotlarining sifatini yuqori darajada baholashgan.",
+    "desc_4":"Biz uchun bu — ishonch va mas’uliyat timsoli. Har bir mahsulotda sifat, xavfsizlik va foydalanuvchi salomatligi ustuvor ahamiyat kasb etadi.",
+    "not_doctor":"Hech qanday shifokor topilmadi!"
+  },
+  "cart": {
+    "title": "Siz tanlagan mahsulotlar",
+    "empty": "Savatcha bo‘sh!",
+    "registerForm": "Ro‘yxatdan o‘tish shakli"
+  },
+  "news_feedback": {
+    "new": "Yangiliklar",
+    "discount": "Chegirmalar",
+    "not_found": "Yangiliklar mavjud emas"
   }
 }

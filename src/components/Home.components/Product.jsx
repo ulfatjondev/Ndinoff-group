@@ -15,7 +15,8 @@ import { NavLink } from "react-router-dom";
 const { TextArea } = Input;
 
 const Product = () => {
-  const uzbFlag = "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026022/flag_vdivbv.jpg";
+  const uzbFlag =
+    "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026022/flag_vdivbv.jpg";
 
   const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -45,7 +46,6 @@ const Product = () => {
       const updatedCart = prevCartItems.includes(id)
         ? prevCartItems.filter((itemId) => itemId !== id)
         : [...prevCartItems, id];
-
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
@@ -65,14 +65,12 @@ const Product = () => {
 
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
-
     if (!fullname || !phone || !userMessage) {
       AntMessage.error("Iltimos, barcha maydonlarni to'ldiring!");
       return;
     }
 
     setBtnLoading(true);
-
     try {
       await dispatch(
         createOrder({
@@ -88,128 +86,143 @@ const Product = () => {
       setFullname("");
       setPhone("+998");
       setUserMessage("");
-    } catch (err) {
+    } catch {
       AntMessage.error("Buyurtma yuborishda xatolik yuz berdi!");
-    }
-    finally {
+    } finally {
       setBtnLoading(false);
     }
   };
 
   if (status === "loading") {
     return (
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%]">
+      <div className="flex justify-center items-center h-[60vh]">
         <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
       </div>
     );
   }
 
-  if (status === "failed") {
-    return "";
-  }
-
-  if (status === "succeeded" && products.length === 0) {
+  if (status === "failed" || (status === "succeeded" && products.length === 0)) {
     return null;
   }
 
   return (
-    <div className="container mx-auto">
-      <div className="text-center my-3">
-        <h1 className="text-[28px] md:text-[30px] lg:text-[40px] font-[500] mt-8">
+    <div className="container mx-auto px-4 py-10">
+      {/* Header */}
+      <div className="text-center mb-10">
+        <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] mb-10">
           {t("product.name")}
         </h1>
-        <p className="my-5 text-[18px] md:text-[20px] lg:text-[20px] ">
-          <b>100 000 {t("product.sena")}</b> {t("product.body")}
+        <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg leading-relaxed">
+          {/* {t("product.body")} */}
         </p>
       </div>
 
+      {/* Products Slider */}
       <Swiper
         slidesPerView={4}
-        spaceBetween={30}
+        spaceBetween={25}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
         breakpoints={{
-          0: { slidesPerView: 1},
-          570: { slidesPerView: 2 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 }
+          0: { slidesPerView: 1 },
+          480: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
         }}
         loop
         modules={[Pagination, Autoplay]}
-        className="w-[90vw]"
+        className="pb-12"
       >
-        {products.map((product) => (
+        {products.slice(0, 8).map((product) => (
           <SwiperSlide key={product.id}>
-            <div className="border p-5 rounded-md flex justify-center items-center flex-col">
-              <img src={product.picture} className="w-[150px] h-[100px]" alt={product.name} />
-              <h1 className="text-xl my-2 font-semibold">
-                {
-                  i18n.language === "uz"
+            <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-5 flex flex-col items-center justify-between h-full">
+              <img
+                src={product.picture}
+                alt={product.name}
+                className="w-[150px] h-[120px] object-contain mb-4 group-hover:scale-105 transition-transform"
+              />
+              <h1 className="text-lg font-semibold text-center mb-2 line-clamp-1">
+                {i18n.language === "uz"
                   ? product.name_uz
                   : i18n.language === "ru"
                   ? product.name_ru
-                  : product.name_en
-                }
+                  : product.name_en}
               </h1>
-              <p>
+              <p className="text-gray-600 mb-3">
                 <span className="font-medium">{t("product.price")}: </span>
-                <span>{product.price} </span>
-                <span>{t("product.sena")}</span>
+                <span className="font-semibold">{product.price}</span>{" "}
+                {t("product.sena")}
               </p>
 
-              <div className="flex items-center gap-3 mt-2">
-                <button className="btn px-10 py-2 text-[15px] rounded-md" onClick={() => showModal(product)}>
+              <div className="flex gap-3 w-full justify-center mt-auto">
+                <button
+                  onClick={() => showModal(product)}
+                  className="bg-[#354f52] text-[#f2ce9a] font-medium py-2 rounded-lg transition-all px-10"
+                >
                   {t("purchase.purchase")}
                 </button>
-                <button
-                  className={`bg-[#354f52] rounded-md px-2 py-2 ${cartItems.includes(product.id) ? "hidden" : ""}`}
-                  onClick={() => handleCart(product.id)}
-                >
-                  <MdAddShoppingCart className="text-[22px] text-[#f2ce9a]" />
-                </button>
+                {!cartItems.includes(product.id) && (
+                  <button
+                    className="bg-[#354f52] p-2 rounded-lg flex items-center justify-center transition-all"
+                    onClick={() => handleCart(product.id)}
+                  >
+                    <MdAddShoppingCart className="text-[22px] text-[#f2ce9a]" />
+                  </button>
+                )}
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="flex items-center justify-center mt-6 max-md:mt-5">
-        <NavLink to="/product" className="btn btn-card">
+      {/* See more */}
+      <div className="flex justify-center mt-10">
+        <NavLink
+          to="/product"
+          className="bg-[#354f52] text-[#EECB98] px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all"
+        >
           {t("Global.more")}
         </NavLink>
       </div>
 
-      {/* Modal */}
+      {/* Modal — untouched */}
       <Modal open={isModalVisible} onCancel={handleCancel} footer={null} width={900} centered>
         <div className="flex max-md:flex-col items-center justify-center gap-10 p-10">
           {selectedProduct && (
             <div className="w-[450px] max-md:w-[80vw] flex flex-col items-center justify-center">
-              <img src={selectedProduct.picture} alt={selectedProduct.name} className="w-[60%] object-cover" />
+              <img
+                src={selectedProduct.picture}
+                alt={selectedProduct.name}
+                className="w-[60%] object-cover"
+              />
               <h1 className="mt-3 text-[20px] font-[500]">
-                {
-                  i18n.language === "uz"
+                {i18n.language === "uz"
                   ? selectedProduct.name_uz
                   : i18n.language === "ru"
                   ? selectedProduct.name_ru
-                  : selectedProduct.name_en
-                }
+                  : selectedProduct.name_en}
               </h1>
-              <p className="py-2"><strong>Narxi:</strong> {selectedProduct.price} {t("product.productSena")}</p>
-              <p className="w-[90%]">
-                {
-                  i18n.language === "uz"
-                  ? selectedProduct.information_uz.slice(0, 100)
+              <p className="py-2">
+                <strong>{t("product.price")}:</strong> {selectedProduct.price} {t("product.productSena")}
+              </p>
+              <p className="w-[90%] text-gray-600 line-clamp-3">
+                {i18n.language === "uz"
+                  ? selectedProduct.body_uz
                   : i18n.language === "ru"
-                  ? selectedProduct.information_ru.slice(0, 100)
-                  : selectedProduct.information_en.slice(0, 100)
-                }...
+                  ? selectedProduct.body_ru
+                  : selectedProduct.body_en
+                }
               </p>
             </div>
           )}
           <div className="w-[500px] max-md:w-[80vw] flex flex-col items-center justify-center rounded-lg">
-            <h1 className="text-center font-medium text-[25px] mb-3">{t('purchase.purchase')}</h1>
-            <form onSubmit={handleOrderSubmit} className="w-full flex flex-col items-center gap-3">
+            <h1 className="text-center font-medium text-[25px] mb-3">
+              {t("purchase.purchase")}
+            </h1>
+            <form
+              onSubmit={handleOrderSubmit}
+              className="w-full flex flex-col items-center gap-3"
+            >
               <Input
                 placeholder={t("register.name")}
                 value={fullname}

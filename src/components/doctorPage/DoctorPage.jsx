@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import VideoDoctor from "./VideoDoctor";
 import { useDispatch, useSelector } from "react-redux";
 import { getDoctor } from "../../store/doctors";
 import { Spin } from "antd"
@@ -87,9 +86,6 @@ const DoctorPage = () => {
           </p>
         )}
       </div> */}
-      <div className="lgxx:my-[100px] py-10">
-        <VideoDoctor videoUrl={"https://www.youtube.com/watch?v=KZyLUphyz0o"} />
-      </div>
     </div>
   );
 };

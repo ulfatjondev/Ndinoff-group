@@ -136,7 +136,7 @@ const Discounts = () => {
                   : selectedProduct.name_en
                 }
               </h1>
-              <p className="py-2"><strong>Narxi:</strong> {selectedProduct.price} {t("product.productSena")}</p>
+              <p className="py-2"><strong>{t("product.price")}:</strong> {selectedProduct.price} {t("product.productSena")}</p>
             </div>
           )}
           <div className="w-[500px] max-md:w-[80vw] flex flex-col items-center justify-center rounded-lg">

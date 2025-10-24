@@ -178,15 +178,15 @@ const DataPage = () => {
                   : selectedProduct.name_en
                 }
               </h1>
-              <p className="py-2"><strong>Narxi:</strong> {selectedProduct.price} {t("product.productSena")}</p>
-              <p className="w-[90%]">
+              <p className="py-2"><strong>{t("product.price")}:</strong> {selectedProduct.price} {t("product.productSena")}</p>
+              <p className="w-[90%] line-clamp-3">
                 {
                   i18n.language === "uz"
-                  ? selectedProduct.information_uz.slice(0, 100)
+                  ? selectedProduct.information_uz
                   : i18n.language === "ru"
-                  ? selectedProduct.information_ru.slice(0, 100)
-                  : selectedProduct.information_en.slice(0, 100)
-                }...
+                  ? selectedProduct.information_ru
+                  : selectedProduct.information_en
+                }
               </p>
             </div>
           )}

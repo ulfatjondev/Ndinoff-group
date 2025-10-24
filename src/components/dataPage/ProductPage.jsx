@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 import "react-rater/lib/react-rater.css";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-// import DataVideo from "./DataVideo";
-// import Rater from "react-rater";
 
 const ProductPage = () => {
   const { id } = useParams();

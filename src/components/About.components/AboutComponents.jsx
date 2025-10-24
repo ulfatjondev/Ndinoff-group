@@ -2,9 +2,15 @@ import CountUp from "react-countup";
 import { useDispatch, useSelector } from "react-redux";
 import { getPartner } from "../../store/partners";
 import { useState, useEffect } from "react";
-import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Autoplay, Pagination } from "swiper/modules";
+import { Spin } from "antd";
 
 const AboutComponents = () => {
   const { t } = useTranslation();
@@ -59,19 +65,22 @@ const AboutComponents = () => {
           <div className="text-center text-[#2F3E46]">
             <h1>{t("AboutComponents.number_title")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
-              {state && <CountUp start={0} end={7} duration={2} />}{"+"}
+              {state && <CountUp start={0} end={7} duration={2} />}
+              {"+"}
             </h1>
           </div>
           <div className="text-center text-[#2F3E46]">
             <h1>{t("AboutComponents.number_title1")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
-              {state && <CountUp start={0} end={4000} duration={2} />}{"+"}
+              {state && <CountUp start={0} end={4000} duration={2} />}
+              {"+"}
             </h1>
           </div>
           <div className="text-center text-[#2F3E46]">
             <h1>{t("AboutComponents.number_title2")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
-              {state && <CountUp start={0} end={350} duration={2} />}{"+"}
+              {state && <CountUp start={0} end={350} duration={2} />}
+              {"+"}
             </h1>
           </div>
         </div>
@@ -81,15 +90,43 @@ const AboutComponents = () => {
             <h1 className="text-center text-[25px] md:text-[30px] lg:text-[50px] text-[#2F3E46] my-[20px]">
               {t("AboutComponents.hamkorlar")}
             </h1>
-            <div className="flex justify-between items-center flex-wrap gap-5 my-10 p-5">
-              {partner.map((item) => (
-                <div
-                  key={item.id}
-                  className="w-[80px] md:w-[90px] lg:w-[180px] flex justify-center"
-                >
-                  <img src={item.picture} alt={`partner-${item.id}`} />
-                </div>
-              ))}
+
+            {/* ✅ Swiper slider qo‘shildi */}
+            <div className="my-10 p-5">
+              <Swiper
+                spaceBetween={30}
+                loop={true}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                breakpoints={{
+                  320: { slidesPerView: 2 },
+                  640: { slidesPerView: 3 },
+                  768: { slidesPerView: 4 },
+                  1024: { slidesPerView: 5 },
+                  1280: { slidesPerView: 5 },
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Autoplay, Pagination]}
+                className="mySwiper"
+              >
+                {partner.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div className="flex justify-center items-center mb-10">
+                      <div className="w-[100px] md:w-[120px] lg:w-[180px] flex justify-center items-center p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                        <img
+                          src={item.picture}
+                          alt={`partner-${item.id}`}
+                          className="object-contain w-full h-[60px] md:h-[80px] lg:h-[100px] hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         )}

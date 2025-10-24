@@ -1,24 +1,20 @@
 import { useTranslation } from "react-i18next";
-import AboutVideo from "../../components/About.components/AboutVideo";
 import { NavLink } from "react-router-dom";
 import { getDoctor } from "../../store/doctors";
 import { useEffect } from "react";
 import { Spin } from "antd"
 import { LoadingOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
+import doc from "../../assets/nurse.png";
 
 const AllDoctors = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { doctor, status } = useSelector((state) => state.doctor);
-  
-  const doc = "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026100/Doc_rijauy.svg";
 
   useEffect(() => {   
       dispatch(getDoctor());
     }, [dispatch]);
-
-    console.log(doctor);
   
     if (status === "loading") return 
 
@@ -28,41 +24,29 @@ const AllDoctors = () => {
 
     if ((status === "succeeded" || status === "idle") && doctor.length === 0) {
       return <div className="min-h-[60vh] text-gray-500 flex items-center justify-center">
-                <h1>Hech qanday shifokor topilmadi!</h1>
+                <h1>{t("doctor_page.not_doctor")}</h1>
              </div>
     }
 
   return (
     <>
-      <div className="container mx-auto my-28">
-        <div className="flex justify-between item-center flex-col-reverse md:flex-col-reverse lg:flex-row">
-          <div className="w-[100%] md:w-[100%] lg:w-[50%] p-3">
+      <div className="container mx-auto my-28 max-md:px-4">
+        <div className="flex justify-between item-center flex-col-reverse md:flex-col-reverse lg:flex-row border rounded-2xl bg-blue-100">
+          <div className="w-[100%] md:w-[100%] lg:w-[50%] p-10">
             <h1 className="text-[20px] md:text-[35px] lg:text-[40px] text-center md:text-center lg:text-left">
-              Bizning shifokorlarimiz yuqori darajada kvalifikalisyaga ega!
+              {t("doctor_page.title")}
             </h1>
-            <p className="my-10 text-justify md:text-justify lg:text-left">
-              Lorem ipsum dolor sit amet consectetur. Sed molestie eu
-              suspendisse odio pulvinar quam aliquet ullamcorper. Diam
-              adipiscing nulla venenatis sit pharetra egestas pellentesque.
-              Pellentesque eget cursus mollis tempor natoque ultricies mattis
-              venenatis fusce. Sed nulla a ut habitasse gravida. Orci quisque
-              tortor enim posuere mi sem. Duis volutpat malesuada aliquam eget
-              dictum id amet non. Congue bibendum nunc pharetra sed volutpat
-              consequat fames. Ornare ante et mi sagittis ut adipiscing
-              consequat ut facilisis. Tortor nisi nibh lobortis purus sociis sem
-              massa. Ac morbi in arcu.
+            <p className="my-5 text-justify md:text-justify lg:text-left">
+              {t("doctor_page.desc_1")}
             </p>
             <p className="text-justify md:text-justify lg:text-left">
-              Lorem ipsum dolor sit amet consectetur. Sed molestie eu
-              suspendisse odio pulvinar quam aliquet ullamcorper. Diam
-              adipiscing nulla venenatis sit pharetra egestas pellentesque.
-              Pellentesque eget cursus mollis tempor natoque ultricies mattis
-              venenatis fusce. Sed nulla a ut habitasse gravida. Orci quisque
-              tortor enim posuere mi sem. Duis volutpat malesuada aliquam eget
-              dictum id amet non. Congue bibendum nunc pharetra sed volutpat
-              consequat fames. Ornare ante et mi sagittis ut adipiscing
-              consequat ut facilisis. Tortor nisi nibh lobortis purus sociis sem
-              massa. Ac morbi in arcu.
+              {t("doctor_page.desc_2")}
+            </p>
+            <p className=" my-5 text-justify md:text-justify lg:text-left">
+              {t("doctor_page.desc_3")}
+            </p>
+            <p className="text-justify md:text-justify lg:text-left">
+              {t("doctor_page.desc_4")}
             </p>
           </div>
           <div>
@@ -110,7 +94,6 @@ const AllDoctors = () => {
             </div>
           ))}
         </div>
-        <AboutVideo videoUrl={"https://www.youtube.com/watch?v=B7jnwCfcBLE"} />
       </div>
     </>
   );

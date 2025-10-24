@@ -25,8 +25,8 @@
     "sena": "uzs",
     "global": "Popular",
     "reacting": "Top Rated",
-    "productSena": "sum",
-    "price": "price"
+    "productSena": "Sum",
+    "price": "Price"
   },
   "customer": {
     "name": "Customer Reviews"
@@ -74,5 +74,23 @@
     "new": "Achievements",
     "discount": "Discounts",
     "null": "No discounted products available at the moment!"
+  },
+  "doctor_page": {
+    "title": "The trust of medical professionals is our greatest value.",
+    "desc_1": "Ndinoff products have drawn the attention of healthcare specialists for their natural composition, high-quality formulas, and proven practical results.",
+    "desc_2": "Doctors from various fields have observed positive improvements in patients who used our products and have noted their high level of quality.",
+    "desc_3": "The specialists presented below are dedicated, experienced, and highly qualified professionals who have recognized the quality of Ndinoff products.",
+    "desc_4": "For us, this trust represents both confidence and responsibility — a commitment to maintain excellence, safety, and care for every individual’s well-being.",
+    "not_doctor": "No doctor found!"
+  },
+  "cart": {
+    "title": "Your selected products",
+    "empty": "Cart is empty!",
+    "registerForm": "Register form"
+  },
+  "news_feedback": {
+    "new": "News",
+    "discount": "Discounts",
+    "not_found": "No news available"
   }
 }
