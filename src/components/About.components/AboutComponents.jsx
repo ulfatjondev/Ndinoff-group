@@ -13,7 +13,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Spin } from "antd";
 
 const AboutComponents = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { partner, status } = useSelector((state) => state.partner);
   const [state, setState] = useState(false);
@@ -23,6 +23,7 @@ const AboutComponents = () => {
     setState(true);
   }, [dispatch]);
 
+  // ⏳ Yuklanish holati
   if (status === "loading")
     return (
       <div className="absolute top-[50%] left-[50%] translate-x-[-50%]">
@@ -30,14 +31,12 @@ const AboutComponents = () => {
       </div>
     );
 
-  if (status === "failed") return null;
-
   return (
     <>
       <div className="AboutComponents">
-        <div className="container mx-auto">
-          <div className="p-4 w-[50%] md:w-[40%] lg:w-[25vw] flex flex-col items-center justify-center gap-6 h-[50vh] md:h-[70vh] lg:h-[70vh] text-[#002940]">
-            <h1 className="text-[25px] md:text-[50px] lg:text-[64px] font-bold md:leading-[56px] lg:leading-[80px]">
+        <div className="container mx-auto h-full flex justify-start items-center max-md:px-4">
+          <div className="w-[90%] md:w-[35vw] text-[#002940] flex flex-col items-start justify-center gap-6">
+            <h1 className="text-[25px] md:text-[35px] lg:text-[55px] xl:text-[68px] font-bold md:leading-[56px] lg:leading-[80px]">
               {t("AboutComponents.title")}
             </h1>
             <p className="text-[16px] md:text-[18px] lg:text-[18px]">
@@ -55,7 +54,7 @@ const AboutComponents = () => {
             </h1>
           </div>
           <div className="w-[90%] mx-auto text-justify">
-            <p className="text-[16px] md:text-[18px] lg:text-[20px]">
+            <p className="text-center text-[16px] md:text-[18px] lg:text-[20px]">
               {t("AboutComponents.main_description")}
             </p>
           </div>
@@ -84,14 +83,23 @@ const AboutComponents = () => {
             </h1>
           </div>
         </div>
-        {/* Hamkorlar bo‘limi faqat partner bor bo‘lsa ko‘rinadi */}
-        {partner?.length > 0 && (
-          <div className="my-[10px] md:my-[50px] lg:my-[100px]">
-            <h1 className="text-center text-[25px] md:text-[30px] lg:text-[50px] text-[#2F3E46] my-[20px]">
-              {t("AboutComponents.hamkorlar")}
-            </h1>
 
-            {/* ✅ Swiper slider qo‘shildi */}
+        {/* ✅ Hamkorlar bo‘limi */}
+        <div className="my-[10px] md:my-[50px] lg:my-[100px]">
+          <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] my-[20px]">
+            {t("AboutComponents.hamkorlar")}
+          </h1>
+
+          {/* 🔹 Xatolik yoki bo‘sh holatda xabar chiqadi */}
+          {status === "failed" || !partner || partner.length === 0 ? (
+            <p className="text-center text-gray-500 text-lg mt-10">
+              {i18n.language === "uz"
+                ? "Hozircha homiylar mavjud emas!"
+                : i18n.language === "ru"
+                ? "Пока нет спонсоров!"
+                : "No sponsors available yet!"}
+            </p>
+          ) : (
             <div className="my-10 p-5">
               <Swiper
                 spaceBetween={30}
@@ -128,8 +136,8 @@ const AboutComponents = () => {
                 ))}
               </Swiper>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );

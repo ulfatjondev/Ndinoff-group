@@ -30,8 +30,6 @@ const Discounts = () => {
     dispatch(getDiscount());
   }, [dispatch]);
 
-  console.log(discount);
-
   const handlePhoneChange = (e) => {
     const value = e.target.value;
     if (value.startsWith("+998") && value.length <= 13) {
@@ -67,72 +65,71 @@ const Discounts = () => {
     );
   }
 
-  if (status === "failed") {
-    return "";
+  if (status === "failed" || !discount || discount.length === 0) {
+    return (
+      <p className="text-center text-gray-500 text-lg my-10">
+        {t("news.null")}
+      </p>
+    );
   }
 
   return (
-    <div className="container mx-auto mb-10">
-      {discount.length === 0 ? (
-        <p className="text-center text-gray-500 text-lg mt-10">
-          {t("news.null")}
-        </p>
-      ) : (
-        <Swiper
-          slidesPerView={4}
-          spaceBetween={30}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            480: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-          }}
-          loop
-          modules={[Pagination, Autoplay]}
-          className="cursor-ew-resize h-[40vh]"
-        >
-          {discount.map((product) => (
-            <SwiperSlide key={product.id}>
-              <div className="w-[90%] border p-5 rounded-md flex justify-center items-center flex-col hover:shadow-lg transition-all duration-300 bg-white">
-                <img
-                  src={product.picture}
-                  className="w-[150px] h-[150px] object-contain mb-3"
-                  alt={product.name}
-                />
-                <h1 className="text-lg font-semibold mb-1 text-center">
-                  {i18n.language === "uz"
-                    ? product.name_uz
-                    : i18n.language === "ru"
-                    ? product.name_ru
-                    : product.name_en}
-                </h1>
-                <p className="text-gray-700 mb-1 text-center">
-                  <span className="font-medium">{t("product.price")}: </span>
-                  {product.price} {t("product.sena")}
-                </p>
-                <div className="flex items-center gap-3 mt-2">
-                  <button
-                    className="btn px-10 py-2 text-[15px] rounded-md"
-                    onClick={() => showModal(product)}
-                  >
-                    {t("purchase.purchase")}
-                  </button>
-                  <button
-                    className={`bg-[#354f52] rounded-md px-2 py-2 ${
-                      cartItems.includes(product.id) ? "hidden" : ""
-                    }`}
-                    onClick={() => handleCart(product.id)}
-                  >
-                    <MdAddShoppingCart className="text-[22px] text-[#f2ce9a]" />
-                  </button>
-                </div>
+    <div className="container mx-auto mb-10 max-md:px-4">
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          480: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
+        }}
+        loop
+        modules={[Pagination, Autoplay]}
+        className="cursor-ew-resize h-[40vh]"
+      >
+        {discount.map((product) => (
+          <SwiperSlide key={product.id}>
+            <div className="w-[90%] border p-5 rounded-md flex justify-center items-center flex-col hover:shadow-lg transition-all duration-300 bg-white">
+              <img
+                src={product.picture}
+                className="w-[150px] h-[150px] object-contain mb-3"
+                alt={product.name}
+              />
+              <h1 className="text-lg font-semibold mb-1 text-center">
+                {i18n.language === "uz"
+                  ? product.name_uz
+                  : i18n.language === "ru"
+                  ? product.name_ru
+                  : product.name_en}
+              </h1>
+              <p className="text-gray-700 mb-1 text-center">
+                <span className="font-medium">{t("product.price")}: </span>
+                {product.price} {t("product.sena")}
+              </p>
+              <div className="flex items-center gap-3 mt-2">
+                <button
+                  className="btn px-10 py-2 text-[15px] rounded-md"
+                  onClick={() => showModal(product)}
+                >
+                  {t("purchase.purchase")}
+                </button>
+                <button
+                  className={`bg-[#354f52] rounded-md px-2 py-2 ${
+                    cartItems.includes(product.id) ? "hidden" : ""
+                  }`}
+                  onClick={() => handleCart(product.id)}
+                >
+                  <MdAddShoppingCart className="text-[22px] text-[#f2ce9a]" />
+                </button>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <Modal
         open={isModalVisible}

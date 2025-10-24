@@ -92,5 +92,8 @@
     "new": "News",
     "discount": "Discounts",
     "not_found": "No news available"
+  },
+  "partner": {
+    "not_found":"No sponsors available yet!"
   }
 }

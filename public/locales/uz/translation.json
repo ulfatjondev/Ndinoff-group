@@ -92,5 +92,8 @@
     "new": "Yangiliklar",
     "discount": "Chegirmalar",
     "not_found": "Yangiliklar mavjud emas"
+  },
+  "partner": {
+    "not_found":"Hozircha homiylar mavjud emas!"
   }
 }
