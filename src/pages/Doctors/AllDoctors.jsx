@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import { getDoctor } from "../../store/doctors";
 import { useEffect } from "react";
-import { Spin } from "antd"
+import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import doc from "../../assets/nurse.png";
@@ -12,21 +12,16 @@ const AllDoctors = () => {
   const dispatch = useDispatch();
   const { doctor, status } = useSelector((state) => state.doctor);
 
-  useEffect(() => {   
-      dispatch(getDoctor());
-    }, [dispatch]);
-  
-    if (status === "loading") return 
+  useEffect(() => {
+    dispatch(getDoctor());
+  }, [dispatch]);
 
-    <div className="absolute top-[50%] left-[50%] translate-x-[-50%]">
-      <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
-    </div>
-
-    if ((status === "succeeded" || status === "idle") && doctor.length === 0) {
-      return <div className="min-h-[60vh] text-gray-500 flex items-center justify-center">
-                <h1>{t("doctor_page.not_doctor")}</h1>
-             </div>
-    }
+  if (status === "loading")
+    return (
+      <div className="absolute top-[50%] left-[50%] translate-x-[-50%]">
+        <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+      </div>
+    );
 
   return (
     <>
@@ -53,46 +48,56 @@ const AllDoctors = () => {
             <img src={doc} alt="" />
           </div>
         </div>
-        <h1 className="text-center my-20 text-[40px]">Doktorlar</h1>
-        <div className="flex justify-center text-center flex-wrap gap-5 lg:gap-20 my-20">
-          {doctor?.map((item) => (
-            <div
-              className="flex items-center flex-col border p-3 rounded-lg w-[80%] md:w-[45%] lg:w-[25%]"
-              key={item.id}
-            >
-              <img src={item.picture} alt="" className="rounded-t-lg w-[200px] h-[250px]"/>
-              <h3 className="text-[27px] my-3">{item.fullname}</h3>
-              <div>
-                <h3 className="">
-                  <span className="font-[600]">{t("doctors.direction")}: </span>
-                  {
-                    i18n.language === "uz"
-                    ? item.direction_uz
-                    : i18n.language === "ru"
-                    ? item.direction_ru
-                    : item.direction_en
-                  }
+
+        <h1 className="text-center text-[40px] mt-24">{t("navbar.doc")}</h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10 px-4 md:px-8 lg:px-12">
+          {doctor && doctor.length > 0 ? (
+            doctor.map((item) => (
+              <NavLink
+                to={`/doctorpage/${item.id}`}
+                key={item.id}
+                className="flex flex-col items-center border rounded-2xl p-4 bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              >
+                <img
+                  src={item.picture}
+                  alt={item.fullname}
+                  className="rounded-xl w-[200px] h-[250px] object-cover mb-4"
+                />
+                <h3 className="text-[22px] font-semibold mb-2 text-center">
+                  {item.fullname}
                 </h3>
-                <a href={item.call}>
-                  <span className="font-[600] my-3">{t("doctors.call")}: </span>
-                  {item.call}
-                </a>
-                <p>
-                  <span className="font-[600]">{t("doctors.info")}: </span>
-                  {
-                    i18n.language === "uz"
-                    ? item.body_uz
-                    : i18n.language === "ru"
-                    ? item.body_ru
-                    : item.body_en
-                  }
-                </p>
-                <NavLink to={`/doctorpage/${item.id}`} className="btn btn_card">
-                  {t("Global.button")}
-                </NavLink>
-              </div>
-            </div>
-          ))}
+                <div className="text-left w-full">
+                  <p className="text-gray-700 mb-1">
+                    <span className="font-semibold">
+                      {t("doctors.direction")}:{" "}
+                    </span>
+                    {i18n.language === "uz"
+                      ? item.direction_uz
+                      : i18n.language === "ru"
+                      ? item.direction_ru
+                      : item.direction_en}
+                  </p>
+                  <p className="text-gray-700 mb-1">
+                    <span className="font-semibold">{t("doctors.call")}: </span>
+                    {item.call}
+                  </p>
+                  <p className="text-gray-700 line-clamp-3">
+                    <span className="font-semibold">{t("doctors.info")}: </span>
+                    {i18n.language === "uz"
+                      ? item.body_uz
+                      : i18n.language === "ru"
+                      ? item.body_ru
+                      : item.body_en}
+                  </p>
+                </div>
+              </NavLink>
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-500 text-[20px]">
+              {t("doctor_page.not_doctor")}
+            </p>
+          )}
         </div>
       </div>
     </>

@@ -131,7 +131,7 @@ const Product = () => {
         }}
         loop
         modules={[Pagination, Autoplay]}
-        className="pb-12"
+        className="cursor-ew-resize pb-12"
       >
         {products.slice(0, 8).map((product) => (
           <SwiperSlide key={product.id}>
@@ -179,7 +179,7 @@ const Product = () => {
       <div className="flex justify-center mt-10">
         <NavLink
           to="/product"
-          className="bg-[#354f52] text-[#EECB98] px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all"
+          className="text-center btn btn-card"
         >
           {t("Global.more")}
         </NavLink>

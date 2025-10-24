@@ -40,7 +40,7 @@ const NewComponents = () => {
   return (
     <>
       <div className="container mx-auto">
-        <h1 className="text-center my-10 text-[30px] md:text-[40px] font-bold">
+        <h1 className="text-center my-10 text-[28px] md:text-[30px] lg:text-[40px] font-[500]">
           {t("news.new") || "Yangiliklar"}
         </h1>
         {achievements && achievements.length > 0 ? (
@@ -83,9 +83,9 @@ const NewComponents = () => {
         )}
       </div>
 
-      <div className="container mx-auto border-t pt-10 mt-10">
-        <h1 className="text-center text-[30px] md:text-[40px] font-bold mb-10">
-          {t("news.discount") || "Chegirmalar"}
+      <div className="container mx-auto border-t pt-24">
+        <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] mb-10">
+          {t("news.discount")}
         </h1>
         <Discounts />
       </div>
