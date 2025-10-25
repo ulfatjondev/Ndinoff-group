@@ -49,33 +49,33 @@ const AboutComponents = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center gap-10 my-10 flex-wrap">
           <div className="w-[100%] text-center">
-            <h1 className="text-[28px] md:text-[32px] lg:text-[42px]">
+            <h1 className="text-[28px] md:text-[32px] lg:text-[42px] text-[#002940]">
               {t("AboutComponents.main_title")}
             </h1>
           </div>
           <div className="w-[90%] mx-auto text-justify">
-            <p className="text-center text-[16px] md:text-[18px] lg:text-[20px]">
+            <p className="text-center text-[16px] md:text-[18px] lg:text-[20px] text-[#002940]">
               {t("AboutComponents.main_description")}
             </p>
           </div>
         </div>
 
         <div className="flex justify-between flex-col md:flex-row lg:flex-row items-center gap-10 py-[60px] border-t border-b">
-          <div className="text-center text-[#2F3E46]">
+          <div className="text-center text-[#002940]">
             <h1>{t("AboutComponents.number_title")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
               {state && <CountUp start={0} end={7} duration={2} />}
               {"+"}
             </h1>
           </div>
-          <div className="text-center text-[#2F3E46]">
+          <div className="text-center text-[#002940]">
             <h1>{t("AboutComponents.number_title1")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
               {state && <CountUp start={0} end={4000} duration={2} />}
               {"+"}
             </h1>
           </div>
-          <div className="text-center text-[#2F3E46]">
+          <div className="text-center text-[#002940]">
             <h1>{t("AboutComponents.number_title2")}</h1>
             <h1 className="text-[50px] font-bold text-[#F2CE9A]">
               {state && <CountUp start={0} end={350} duration={2} />}
@@ -86,7 +86,7 @@ const AboutComponents = () => {
 
         {/* ✅ Hamkorlar bo‘limi */}
         <div className="my-[10px] md:my-[50px] lg:my-[100px]">
-          <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] my-[20px]">
+          <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] my-[20px] text-[#002940]">
             {t("AboutComponents.hamkorlar")}
           </h1>
 

@@ -34,7 +34,7 @@ const Doctors = () => {
 
   return (
     <div className="container mx-auto my-10">
-      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] my-6">
+      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940] my-6">
         {t("doctors.mainInfo")}
       </h1>
 
@@ -58,7 +58,7 @@ const Doctors = () => {
               clickable: true,
             }}
             autoplay={{
-              delay: 3000,
+              delay: 5000,
               disableOnInteraction: false,
             }}
             loop={true}
@@ -95,12 +95,12 @@ const Doctors = () => {
                     alt={item.fullname}
                     className="rounded-xl w-[200px] h-[250px] object-cover mb-4"
                   />
-                  <h3 className="text-[18px] md:text-[20px] lg:text-[22px] font-semibold mb-2 text-center">
+                  <h3 className="text-[18px] md:text-[20px] lg:text-[22px] font-semibold text-center text-[#002940] mb-2">
                     {item.fullname}
                   </h3>
 
                   <div className="w-full text-center">
-                    <p className="text-gray-700 mb-1 text-[14px] md:text-[15px]">
+                    <p className="text-[#002940] mb-1 text-[14px] md:text-[15px]">
                       <span className="font-semibold">{t("doctors.direction")}: </span>
                       {i18n.language === "uz"
                         ? item.direction_uz
@@ -109,7 +109,7 @@ const Doctors = () => {
                         : item.direction_en}
                     </p>
 
-                    <p className="text-gray-700 mb-3 text-[14px] md:text-[15px]">
+                    <p className="text-[#002940] mb-3 text-[14px] md:text-[15px]">
                       <span className="font-semibold">{t("doctors.call")}: </span>
                       <a href={`tel:${item.call}`}>
                         {item.call}

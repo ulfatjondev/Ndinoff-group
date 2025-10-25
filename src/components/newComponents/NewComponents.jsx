@@ -27,9 +27,7 @@ const NewComponents = () => {
 
   if (status === "failed")
     return (
-      <p className="text-center text-red-500 text-lg mt-10">
-        {t("error.loading_failed") || "Ma'lumotni yuklashda xatolik yuz berdi"}
-      </p>
+      <div></div>
     );
 
   const handleCardClick = (img) => {
@@ -40,8 +38,8 @@ const NewComponents = () => {
   return (
     <>
       <div className="container mx-auto">
-        <h1 className="text-center my-10 text-[28px] md:text-[30px] lg:text-[40px] font-[500]">
-          {t("news.new") || "Yangiliklar"}
+        <h1 className="text-center my-10 text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940]">
+          {t("news.new")}
         </h1>
         {achievements && achievements.length > 0 ? (
           <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-5 pb-16">
@@ -65,7 +63,7 @@ const NewComponents = () => {
                   />
                 </div>
                 <div className="p-5">
-                  <h1 className="text-lg font-medium line-clamp-3">
+                  <h1 className="text-lg font-medium line-clamp-3 text-[#002940]">
                     {i18n.language === "uz"
                       ? item.title_uz
                       : i18n.language === "ru"
@@ -78,13 +76,13 @@ const NewComponents = () => {
           </div>
         ) : (
           <p className="text-center text-gray-500 text-xl my-10">
-            {t("news.not_found") || "Yangiliklar mavjud emas"}
+            {t("news.not_found")}
           </p>
         )}
       </div>
 
       <div className="container mx-auto border-t pt-24">
-        <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] mb-10">
+        <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940] mb-10">
           {t("news.discount")}
         </h1>
         <Discounts />

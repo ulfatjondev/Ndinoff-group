@@ -9,6 +9,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { Pagination, Autoplay } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { MdAddShoppingCart } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const { TextArea } = Input;
 
@@ -99,24 +100,24 @@ const Discounts = () => {
                 className="w-[150px] h-[150px] object-contain mb-3"
                 alt={product.name}
               />
-              <h1 className="text-lg font-semibold mb-1 text-center">
+              <h1 className="text-lg font-semibold text-center text-[#002940] mb-1">
                 {i18n.language === "uz"
                   ? product.name_uz
                   : i18n.language === "ru"
                   ? product.name_ru
                   : product.name_en}
               </h1>
-              <p className="text-gray-700 mb-1 text-center">
+              <p className="text-[#002940] mb-1 text-center">
                 <span className="font-medium">{t("product.price")}: </span>
                 {product.price} {t("product.sena")}
               </p>
               <div className="flex items-center gap-3 mt-2">
-                <button
+                <NavLink
+                  to={`/datapage/${product.id}`}
                   className="btn px-10 py-2 text-[15px] rounded-md"
-                  onClick={() => showModal(product)}
                 >
-                  {t("purchase.purchase")}
-                </button>
+                  {t("Global.button")}
+                </NavLink>
                 <button
                   className={`bg-[#354f52] rounded-md px-2 py-2 ${
                     cartItems.includes(product.id) ? "hidden" : ""
@@ -146,14 +147,14 @@ const Discounts = () => {
                 alt={selectedProduct.name}
                 className="w-[60%] object-cover"
               />
-              <h1 className="mt-3 text-[20px] font-[500]">
+              <h1 className="mt-3 text-[20px] font-[500] text-[#002940]">
                 {i18n.language === "uz"
                   ? selectedProduct.name_uz
                   : i18n.language === "ru"
                   ? selectedProduct.name_ru
                   : selectedProduct.name_en}
               </h1>
-              <p className="py-2">
+              <p className="text-[#002940] py-2">
                 <strong>{t("product.price")}:</strong> {selectedProduct.price}{" "}
                 {t("product.productSena")}
               </p>

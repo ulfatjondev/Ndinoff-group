@@ -87,7 +87,7 @@ const Register = () => {
 
   return (
     <div className="pt-24 pb-5">
-      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] pb-10">
+      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940] pb-10">
         {t("register.title") || "Ro‘yxatdan o‘tish"}
       </h1>
 

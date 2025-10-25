@@ -28,19 +28,19 @@ const AllDoctors = () => {
       <div className="container mx-auto my-28 max-md:px-4">
         <div className="flex justify-between item-center flex-col-reverse md:flex-col-reverse lg:flex-row border rounded-2xl bg-blue-100">
           <div className="w-[100%] md:w-[100%] lg:w-[50%] p-10">
-            <h1 className="text-[20px] md:text-[35px] lg:text-[40px] text-center md:text-center lg:text-left">
+            <h1 className="text-[20px] md:text-[35px] lg:text-[40px] text-center md:text-center lg:text-left text-[#002940]">
               {t("doctor_page.title")}
             </h1>
-            <p className="my-5 text-justify md:text-justify lg:text-left">
+            <p className="my-5 text-justify md:text-justify lg:text-left text-[#002940]">
               {t("doctor_page.desc_1")}
             </p>
-            <p className="text-justify md:text-justify lg:text-left">
+            <p className="text-justify md:text-justify lg:text-left text-[#002940]">
               {t("doctor_page.desc_2")}
             </p>
-            <p className=" my-5 text-justify md:text-justify lg:text-left">
+            <p className=" my-5 text-justify md:text-justify lg:text-left text-[#002940]">
               {t("doctor_page.desc_3")}
             </p>
-            <p className="text-justify md:text-justify lg:text-left">
+            <p className="text-justify md:text-justify lg:text-left text-[#002940]">
               {t("doctor_page.desc_4")}
             </p>
           </div>
@@ -49,7 +49,7 @@ const AllDoctors = () => {
           </div>
         </div>
 
-        <h1 className="text-center text-[40px] mt-24">{t("navbar.doc")}</h1>
+        <h1 className="text-center text-[40px] text-[#002940] mt-24">{t("navbar.doc")}</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10 px-4 md:px-8 lg:px-12">
           {doctor && doctor.length > 0 ? (
@@ -64,11 +64,11 @@ const AllDoctors = () => {
                   alt={item.fullname}
                   className="rounded-xl w-[200px] h-[250px] object-cover mb-4"
                 />
-                <h3 className="text-[22px] font-semibold mb-2 text-center">
+                <h3 className="text-[22px] font-semibold text-center text-[#002940] mb-2">
                   {item.fullname}
                 </h3>
                 <div className="text-left w-full">
-                  <p className="text-gray-700 mb-1">
+                  <p className="text-[#002940] mb-1">
                     <span className="font-semibold">
                       {t("doctors.direction")}:{" "}
                     </span>
@@ -78,11 +78,11 @@ const AllDoctors = () => {
                       ? item.direction_ru
                       : item.direction_en}
                   </p>
-                  <p className="text-gray-700 mb-1">
+                  <p className="text-[#002940] mb-1">
                     <span className="font-semibold">{t("doctors.call")}: </span>
                     {item.call}
                   </p>
-                  <p className="text-gray-700 line-clamp-3">
+                  <p className="text-[#002940] line-clamp-3">
                     <span className="font-semibold">{t("doctors.info")}: </span>
                     {i18n.language === "uz"
                       ? item.body_uz

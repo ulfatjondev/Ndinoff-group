@@ -5,7 +5,7 @@ const GoogleMap = () => {
 
   return (
     <div className="container mx-auto my-10 py-10">
-      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] mb-10">
+      <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940] mb-10">
         {t("adress.title")}
       </h1>
 

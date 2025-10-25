@@ -11,10 +11,8 @@ import News from "./pages/News/News.jsx";
 import AllDoctors from "./pages/Doctors/AllDoctors.jsx";
 import DataPage from "./components/dataPage/DataPage.jsx";
 import { useState } from "react";
-import ProductPage from "./components/dataPage/ProductPage.jsx";
 import DoctorPage from "./components/doctorPage/DoctorPage.jsx";
 import Korzinka from "./pages/Korzinka/Korzinka.jsx";
-import Feedback from "./pages/Feedback/Feedback.jsx";
 import Notfound from "./pages/404Notfound/index.jsx";
 
 const App = () => {
@@ -50,16 +48,8 @@ const App = () => {
           element: <Korzinka />
         },
         {
-          path: "/feedback",
-          element: <Feedback />
-        },
-        {
           path: "/datapage/:id",
           element: <DataPage />,
-        },
-        {
-          path: "/productpage/:id",
-          element: <ProductPage />,
         },
         {
           path: "/doctorpage/:id",

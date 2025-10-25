@@ -8,7 +8,7 @@ export const getSwiper = createAsyncThunk(
   "swiper/getSwiper",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API}/lasts-pills`, {
+      const response = await axios.get(`${API}/popular-pills`, {
         headers: {
           'Content-Type': 'application/json',
           Accept :'application/json'

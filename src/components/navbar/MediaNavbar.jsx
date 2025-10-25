@@ -21,9 +21,8 @@ const MediaNavbar = () => {
     { path: "/", name: t("navbar.main") },
     { path: "/about", name: t("navbar.about") },
     { path: "/product", name: t("navbar.product") },
-    { path: "/feedback", name: t("navbar.feedback") },
-    { path: "/news", name: t("navbar.news") },
-    { path: "/alldoctors", name: t("navbar.doc") }
+    { path: "/alldoctors", name: t("navbar.doc") },
+    { path: "/news", name: t("navbar.news") }
   ];
 
   useEffect(() => {

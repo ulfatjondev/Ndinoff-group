@@ -41,13 +41,12 @@ const SwiperHome = () => {
     return null;
   }
 
-  // 🔹 Tezroq markazdan chiqib kelish animatsiyasi
   const slideVariants = {
     hidden: { opacity: 0, scale: 0.92 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.9, ease: [0.45, 0, 0.55, 1] }, // tezroq va yumshoq
+      transition: { duration: 0.9, ease: [0.45, 0, 0.55, 1] },
     },
     exit: {
       opacity: 0,
@@ -60,7 +59,7 @@ const SwiperHome = () => {
     <Swiper
       pagination={true}
       autoplay={{
-        delay: 5000, // 5 sekund har bir slayd uchun
+        delay: 5000,
         disableOnInteraction: false,
       }}
       loop={true}
@@ -86,14 +85,14 @@ const SwiperHome = () => {
                 >
                   {/* Chap taraf */}
                   <div className="w-[50%] max-md:w-full text-center md:text-left">
-                    <h1 className="text-[20px] md:text-[32px] lg:text-[64px] font-semibold leading-[35px] md:leading-[45px] lg:leading-[72px]">
+                    <h1 className="text-[20px] md:text-[32px] lg:text-[64px] font-semibold leading-[35px] md:leading-[45px] lg:leading-[72px] text-[#002940]">
                       {i18n.language === "uz"
                         ? item.name_uz
                         : i18n.language === "ru"
                         ? item.name_ru
                         : item.name_en}
                     </h1>
-                    <p className="py-5 text-[14px] md:text-[18px] leading-relaxed">
+                    <p className="py-5 text-[14px] md:text-[18px] leading-relaxed text-[#002940]">
                       {decodeHTML(
                         i18n.language === "uz"
                           ? item.body_uz

@@ -22,7 +22,8 @@ const DataPage = () => {
   const dispatch = useDispatch();
   const { pill, status, error } = useSelector((state) => state.pills);
 
-  const uzbFlag = "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026022/flag_vdivbv.jpg";
+  const uzbFlag =
+    "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026022/flag_vdivbv.jpg";
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [phone, setPhone] = useState("+998");
@@ -79,8 +80,7 @@ const DataPage = () => {
       setUserMessage("");
     } catch (err) {
       AntMessage.error("Buyurtma yuborishda xatolik yuz berdi!");
-    }
-    finally {
+    } finally {
       setBtnLoading(false);
     }
   };
@@ -98,102 +98,133 @@ const DataPage = () => {
   }
 
   if (!pill) {
-    return <p className="text-center my-10">
-      {error ? error : "No data found"}
-    </p>;
+    return (
+      <p className="text-center my-10">{error ? error : "No data found"}</p>
+    );
   }
 
   return (
     <>
-    <div className="container mx-auto my-20">
-      <div className="flex justify-between items-center py-10 px-5">
-        <div className="w-[50%] md:w-[50%] lg:w-[40%]">
-          <h1 className="font-semibold text-[20px] md:text-[25px] lg:text-[40px]">
-            {
-              i18n.language === "uz"
-              ? pill.name_uz
-              : i18n.language === "ru"
-              ? pill.name_ru
-              : pill.name_en
-            }
-          </h1>
-          <p className="my-5 md:leading-7 lg:leading-10 text-[10px] md:text-[18px]">
-            {decodeHTML(
-              i18n.language === "uz"
-              ? pill.body_uz
-              : i18n.language === "ru"
-              ? pill.body_ru
-              : pill.body_en
-            )}
-          </p>
-          <p className="font-medium text-[18px] md:text-[20px] lg:text-[30px] my-3">
-            {pill.price} {t("product.sena")}
-          </p>
-          <button
-            className="btn text-[14px] md:text-[16px] lg:text-[17px]"
-            onClick={() => showModal(pill)}
-          >
-            {t("purchase.purchase")}
-          </button>
+      <div className="container mx-auto my-20">
+        <div className="flex justify-between items-center py-10 px-5">
+          <div className="w-[50%] md:w-[50%] lg:w-[40%]">
+            <h1 className="font-semibold text-[20px] md:text-[25px] lg:text-[40px]">
+              {i18n.language === "uz"
+                ? pill.name_uz
+                : i18n.language === "ru"
+                ? pill.name_ru
+                : pill.name_en}
+            </h1>
+            <p className="my-5 md:leading-7 lg:leading-10 text-[10px] md:text-[18px]">
+              {decodeHTML(
+                i18n.language === "uz"
+                  ? pill.body_uz
+                  : i18n.language === "ru"
+                  ? pill.body_ru
+                  : pill.body_en
+              )}
+            </p>
+            <p className="font-medium text-[18px] md:text-[20px] lg:text-[30px] my-3">
+              {pill.price} {t("product.sena")}
+            </p>
+            <button
+              className="btn text-[14px] md:text-[16px] lg:text-[20px] md:font-medium"
+              onClick={() => showModal(pill)}
+            >
+              {t("purchase.purchase")}
+            </button>
+          </div>
+          <div className="w-[50%] md:w-[40%] lg:w-[25%]">
+            <img src={pill.picture} alt="" />
+          </div>
         </div>
-        <div className="w-[50%] md:w-[40%] lg:w-[25%]">
-          <img src={pill.picture} alt="" />
+        <div className="flex items-center justify-between my-10 md:my-8 lg:my-10 border-t py-5 px-4">
+          <div className="text-center">
+            <h1 className="text-[16px] md:text-[25px] lg:text-[30px] font-semibold">
+              {t("Global.type")}
+            </h1>
+            <h1 className="text-[16px] md:text-[25px] lg:text-[30px]">
+              {i18n.language === "uz"
+                ? pill.type_uz
+                : i18n.language === "ru"
+                ? pill.type_ru
+                : pill.type_en}
+            </h1>
+          </div>
+          <div className="text-center">
+            <h1 className="text-[16px] md:text-[25px] lg:text-[30px] font-semibold capitalize">
+              {t("Global.rating")}
+            </h1>
+            <Rater
+              className="text-[16px] md:text-[27px] lg:text-[40px] flex"
+              total={5}
+              rating={pill.rank}
+              interactive={false}
+            />
+          </div>
         </div>
       </div>
-      <div className="flex items-center justify-between my-10 md:my-8 lg:my-10 border-t py-5 px-4">
-        <div className="text-center">
-          <h1 className="text-[16px] md:text-[25px] lg:text-[30px]">{t("Global.type")}</h1>
-          <h1 className="text-[16px] md:text-[25px] lg:text-[30px]">
-            {
-              i18n.language === "uz"
-              ? pill.type_uz
-              : i18n.language === "ru"
-              ? pill.type_ru
-              : pill.type_en
-            }
-          </h1>
-        </div>
-        <div className="text-center">
-          <h1 className="text-[16px] md:text-[25px] lg:text-[30px] capitalize">{t("Global.rating")}</h1>
-          <Rater
-            className="text-[16px] md:text-[27px] lg:text-[40px] flex"
-            total={5}
-            rating={pill.rank}
-            interactive={false}
-          />
-        </div>
-      </div>
-    </div>
-    <Modal open={isModalVisible} onCancel={handleCancel} footer={null} width={900} centered>
+      <Modal
+        open={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+        width={900}
+        centered
+      >
         <div className="flex max-md:flex-col items-center justify-center gap-10 p-10">
           {selectedProduct && (
             <div className="w-[450px] max-md:w-[80vw] flex flex-col items-center justify-center">
-              <img src={selectedProduct.picture} alt={selectedProduct.name} className="w-[60%] object-cover" />
-              <h1 className="mt-3 text-[20px] font-[500]">
-                {
-                  i18n.language === "uz"
+              <img
+                src={selectedProduct.picture}
+                alt={selectedProduct.name}
+                className="w-[55%] object-contain"
+              />
+              <h1 className="text-[21px] font-semibold mt-3">
+                {i18n.language === "uz"
                   ? selectedProduct.name_uz
                   : i18n.language === "ru"
                   ? selectedProduct.name_ru
-                  : selectedProduct.name_en
-                }
+                  : selectedProduct.name_en}
               </h1>
-              <p className="py-2"><strong>{t("product.price")}:</strong> {selectedProduct.price} {t("product.productSena")}</p>
-              <p className="w-[90%] line-clamp-3">
-                {
-                  i18n.language === "uz"
-                  ? selectedProduct.information_uz
-                  : i18n.language === "ru"
-                  ? selectedProduct.information_ru
-                  : selectedProduct.information_en
-                }
+              <p className="text-[14px] md:text-[16px] my-3">
+                {pill.discount_price ? (
+                  <>
+                    <span className="line-through text-gray-500 mr-3">
+                      {pill.price} {t("product.sena")}
+                    </span>
+                    <span className="text-red-600">
+                      {pill.discount_price} {t("product.sena")}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    {pill.price} {t("product.sena")}
+                  </>
+                )}
               </p>
+
+              <p
+                className="w-[90%] line-clamp-3"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    i18n.language === "uz"
+                      ? selectedProduct.body_uz
+                      : i18n.language === "ru"
+                      ? selectedProduct.body_ru
+                      : selectedProduct.body_en,
+                }}
+              ></p>
             </div>
           )}
           <div className="w-[500px] max-md:w-[80vw] flex flex-col items-center justify-center rounded-lg">
-            <h1 className="text-center font-medium text-[25px] mb-3">{t('purchase.purchase')}</h1>
-            <form onSubmit={handleOrderSubmit} className="w-full flex flex-col items-center gap-3">
-            <Input
+            <h1 className="text-center font-semibold text-[25px] mb-3">
+              {t("purchase.purchase")}
+            </h1>
+            <form
+              onSubmit={handleOrderSubmit}
+              className="w-full flex flex-col items-center gap-3"
+            >
+              <Input
                 placeholder={t("register.name")}
                 value={fullname}
                 onChange={(e) => setFullname(e.target.value)}
@@ -203,7 +234,9 @@ const DataPage = () => {
                 value={phone}
                 onChange={handlePhoneChange}
                 className="text-[17px]"
-                prefix={<img src={uzbFlag} alt="UZB" className="w-7 h-5 rounded-sm" />}
+                prefix={
+                  <img src={uzbFlag} alt="UZB" className="w-7 h-5 rounded-sm" />
+                }
               />
               <TextArea
                 placeholder={t("register.message")}

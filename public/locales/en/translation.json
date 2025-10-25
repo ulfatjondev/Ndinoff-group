@@ -26,7 +26,11 @@
     "global": "Popular",
     "reacting": "Top Rated",
     "productSena": "Sum",
-    "price": "Price"
+    "price": "Price",
+    "product_title": "All products",
+    "search": "Search...",
+    "no_product": "Such a product does not exist!",
+    "all": "All"
   },
   "customer": {
     "name": "Customer Reviews"
@@ -68,7 +72,7 @@
     "title": "Our Address"
   },
   "purchase": {
-    "purchase": "buy"
+    "purchase": "Buy now"
   },
   "news": {
     "new": "Achievements",
