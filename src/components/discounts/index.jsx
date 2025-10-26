@@ -4,24 +4,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiscount } from "../../store/discount";
-import { Spin, Modal, Input } from "antd";
+import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Pagination, Autoplay } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { MdAddShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
-const { TextArea } = Input;
-
 const Discounts = () => {
-  const uzbFlag =
-    "https://res.cloudinary.com/dmgcfv5f4/image/upload/v1742026022/flag_vdivbv.jpg";
   const [cartItems, setCartItems] = useState(
     () => JSON.parse(localStorage.getItem("cart")) || []
   );
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [phone, setPhone] = useState("+998");
 
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -30,13 +23,6 @@ const Discounts = () => {
   useEffect(() => {
     dispatch(getDiscount());
   }, [dispatch]);
-
-  const handlePhoneChange = (e) => {
-    const value = e.target.value;
-    if (value.startsWith("+998") && value.length <= 13) {
-      setPhone(value);
-    }
-  };
 
   const handleCart = (id) => {
     setCartItems((prevCartItems) => {
@@ -47,15 +33,6 @@ const Discounts = () => {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
-  };
-
-  const showModal = (product) => {
-    setSelectedProduct(product);
-    setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   if (status === "loading") {
@@ -107,10 +84,22 @@ const Discounts = () => {
                   ? product.name_ru
                   : product.name_en}
               </h1>
-              <p className="text-[#002940] mb-1 text-center">
-                <span className="font-medium">{t("product.price")}: </span>
-                {product.price} {t("product.sena")}
-              </p>
+              {product.discount_price ? (
+                <div className="flex flex-col items-center">
+                  <p className="text-gray-400 line-through text-[15px]">
+                    {product.price} {t("product.sena")}
+                  </p>
+                  <p className="text-[18px] font-medium text-[#002940]">
+                    {product.discount_price} {t("product.sena")}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-[18px] text-[#002940]">
+                  <span className="font-medium">{t("product.price")}: </span>
+                  <span>{product.price} </span>
+                  <span>{t("product.sena")}</span>
+                </p>
+              )}
               <div className="flex items-center gap-3 mt-2">
                 <NavLink
                   to={`/datapage/${product.id}`}
@@ -131,64 +120,6 @@ const Discounts = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <Modal
-        open={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-        width={900}
-        centered
-      >
-        <div className="flex max-md:flex-col items-center justify-center gap-10 p-10">
-          {selectedProduct && (
-            <div className="w-[450px] max-md:w-[80vw] flex flex-col items-center justify-center">
-              <img
-                src={selectedProduct.picture}
-                alt={selectedProduct.name}
-                className="w-[60%] object-cover"
-              />
-              <h1 className="mt-3 text-[20px] font-[500] text-[#002940]">
-                {i18n.language === "uz"
-                  ? selectedProduct.name_uz
-                  : i18n.language === "ru"
-                  ? selectedProduct.name_ru
-                  : selectedProduct.name_en}
-              </h1>
-              <p className="text-[#002940] py-2">
-                <strong>{t("product.price")}:</strong> {selectedProduct.price}{" "}
-                {t("product.productSena")}
-              </p>
-            </div>
-          )}
-          <div className="w-[500px] max-md:w-[80vw] flex flex-col items-center justify-center rounded-lg">
-            <h1 className="text-center font-medium text-[25px] mb-3">
-              {t("register.title", "Ro‘yxatdan o‘tish")}
-            </h1>
-            <form className="w-full flex flex-col items-center gap-3">
-              <Input
-                placeholder={t("register.name", "Ism")}
-                className="text-[17px]"
-              />
-              <Input
-                value={phone}
-                onChange={handlePhoneChange}
-                className="text-[17px]"
-                prefix={
-                  <img src={uzbFlag} alt="UZB" className="w-7 h-5 rounded-sm" />
-                }
-              />
-              <TextArea
-                placeholder={t("register.message", "Xabar")}
-                rows={4}
-                className="text-[17px]"
-              />
-              <button className="w-full bg-[#354f52] text-[#EECB98] font-medium rounded-md px-12 mt-2 py-2">
-                {t("register.button", "Yuborish")}
-              </button>
-            </form>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 };

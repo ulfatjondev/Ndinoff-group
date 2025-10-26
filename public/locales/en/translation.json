@@ -17,7 +17,8 @@
     "mainInfo": "Our Doctors",
     "direction": "Specialization",
     "call": "Phone number",
-    "info": "Information"
+    "info": "Information",
+    "recommended_pills":"Recommended medicines"
   },
   "product": {
     "name": "Products",
@@ -40,6 +41,11 @@
     "more": "More",
     "type": "Type",
     "rating": "rating",
+    "count":"Quantity",
+    "piece": "piece",
+    "reviews": "Usage video",
+    "no_video": "Video not available",
+    "back": "Back",
     "composition": "Product Composition",
     "footer_title": "Working hours:",
     "footer_month": "Monday–Friday",

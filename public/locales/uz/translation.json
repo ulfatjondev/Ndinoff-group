@@ -16,7 +16,8 @@
     "mainInfo": "Bizning Shifokorlar",
     "direction": "Yo'nalishi",
     "call": "Tel raqam",
-    "info": "Ma'lumot"
+    "info": "Ma'lumot",
+    "recommended_pills":"Tavsiya qilgan dorilar"
   },
   "product": {
     "name": "Mahsulotlar",
@@ -39,6 +40,11 @@
     "more":"Ko'proq",
     "type":"Turi",
     "rating":"reyting",
+    "count":"Soni",
+    "piece": "ta",
+    "reviews":"Foydalanish videosi",
+    "no_video": "Video mavjud emas",
+    "back": "Orqaga",
     "composition":"Mahsulot tarkibi",
     "footer_title":"Ish vaqti:",
     "footer_month":"Dushanba–Juma",

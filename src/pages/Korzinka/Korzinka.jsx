@@ -112,7 +112,7 @@ const Korzinka = () => {
 
               <div className="flex items-center gap-3 mt-auto">
                 <button
-                  className="bg-[#354f52] hover:bg-[#2f3e46] text-[#f2ce9a] px-10 py-2 rounded-md font-medium transition-all"
+                  className="bg-[#354f52] hover:bg-[#2f3e46] text-[#f2ce9a] rounded-md font-medium transition-all px-10 py-2"
                   onClick={() => handlePurchase(product)}
                 >
                   {t("purchase.purchase")}
@@ -143,7 +143,7 @@ const Korzinka = () => {
                 alt={selectedProduct.name}
                 className="w-[55%] object-contain"
               />
-              <h1 className="text-[21px] font-semibold mt-3">
+              <h1 className="text-[21px] font-semibold text-[#002940] mt-3">
                 {i18n.language === "uz"
                   ? selectedProduct.name_uz
                   : i18n.language === "ru"
@@ -156,7 +156,7 @@ const Korzinka = () => {
                     <span className="line-through text-gray-500 mr-3">
                       {selectedProduct.price} {t("product.sena")}
                     </span>
-                    <span className="text-red-600">
+                    <span className="text-[#002940]">
                       {selectedProduct.discount_price} {t("product.sena")}
                     </span>
                   </>
@@ -168,7 +168,7 @@ const Korzinka = () => {
               </p>
 
               <p
-                className="w-[90%] line-clamp-3"
+                className="w-[90%] line-clamp-3 text-[#002940]"
                 dangerouslySetInnerHTML={{
                   __html:
                     i18n.language === "uz"
@@ -182,7 +182,7 @@ const Korzinka = () => {
           )}
 
           <div className="w-[500px] max-md:w-[80vw] flex flex-col items-center justify-center rounded-lg">
-            <h1 className="text-center font-semibold text-[25px] mb-3">
+            <h1 className="text-center font-semibold text-[25px] text-[#002940] mb-3">
               {t("purchase.purchase")}
             </h1>
             <form className="w-full flex flex-col items-center gap-3">
