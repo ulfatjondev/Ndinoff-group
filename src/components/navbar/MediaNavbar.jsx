@@ -31,7 +31,7 @@ const MediaNavbar = () => {
   }, []);
 
   return (
-    <div>
+    <div id="navbar">
       <nav className="bg-[#354F52] p-4">
         <div className="container mx-auto flex justify-between items-center">
           <NavLink to={"/"}>

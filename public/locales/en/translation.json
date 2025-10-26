@@ -18,7 +18,7 @@
     "direction": "Specialization",
     "call": "Phone number",
     "info": "Information",
-    "recommended_pills":"Recommended medicines"
+    "recommended_pills": "Recommended medicines"
   },
   "product": {
     "name": "Products",
@@ -41,7 +41,7 @@
     "more": "More",
     "type": "Type",
     "rating": "rating",
-    "count":"Quantity",
+    "count": "Quantity",
     "piece": "piece",
     "reviews": "Usage video",
     "no_video": "Video not available",
@@ -104,6 +104,33 @@
     "not_found": "No news available"
   },
   "partner": {
-    "not_found":"No sponsors available yet!"
+    "not_found": "No sponsors available yet!"
+  },
+  "seo": {
+    "home": {
+      "title": "Ndinoff — Modern health & beauty innovations",
+      "description": "Ndinoff is a modern manufacturing company in Uzbekistan promoting health, beauty, and a balanced lifestyle through science-based, natural products.",
+      "keywords": "Ndinoff, health, beauty, supplements, Uzbekistan, cosmetics"
+    },
+    "about": {
+      "title": "About Us — Ndinoff Company",
+      "description": "Since 2020, Ndinoff has been producing high-quality dietary supplements, cosmetics, and food products that meet international standards.",
+      "keywords": "Ndinoff company, about Ndinoff, dietary supplements, cosmetics, production"
+    },
+    "products": {
+      "title": "Ndinoff Products — Natural. Safe. Effective.",
+      "description": "Discover Ndinoff’s range of dietary supplements, cosmetics, and health products crafted to support a healthy and beautiful life.",
+      "keywords": "Ndinoff products, supplements, cosmetics, natural products, health"
+    },
+    "doctors": {
+      "title": "Our Doctors — Experts in Health and Wellness",
+      "description": "Meet our professional doctors dedicated to providing trusted, science-backed health and lifestyle advice.",
+      "keywords": "Ndinoff doctors, health experts, wellness, medical advice"
+    },
+    "news": {
+      "title": "News — Latest Updates from Ndinoff",
+      "description": "Stay informed about Ndinoff’s latest product launches, innovations, and health-related news.",
+      "keywords": "Ndinoff news, health updates, company news, innovations"
+    }
   }
 }

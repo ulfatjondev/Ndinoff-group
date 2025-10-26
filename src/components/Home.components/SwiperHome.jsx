@@ -68,7 +68,7 @@ const SwiperHome = () => {
         setActiveIndex(swiperInstance.realIndex);
         setFirstLoad(false);
       }}
-      className="container mx-auto h-[70vh] min-h-[70vh] md:h-[60vh] lg:h-[70vh] rounded-3xl my-14 relative overflow-hidden"
+      className="container mx-auto h-[70vh] min-h-[70vh] md:h-[60vh] lg:h-[70vh] rounded-3xl md:my-14 relative overflow-hidden"
     >
       {swiper?.map((item, index) => (
         <SwiperSlide key={item.id}>
@@ -107,7 +107,7 @@ const SwiperHome = () => {
                   </div>
 
                   {/* O‘ng taraf */}
-                  <div className="w-[45%] md:w-[40%] overflow-hidden rounded-xl flex justify-center">
+                  <div className="max-md:w-full w-[45%] md:w-[40%] overflow-hidden rounded-xl flex justify-center">
                     <motion.img
                       src={item.picture}
                       alt=""

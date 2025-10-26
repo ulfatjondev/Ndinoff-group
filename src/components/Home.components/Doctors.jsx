@@ -33,12 +33,11 @@ const Doctors = () => {
   }
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 max-md:px-4">
       <h1 className="text-center text-[28px] md:text-[30px] lg:text-[40px] font-[500] text-[#002940] my-6">
         {t("doctors.mainInfo")}
       </h1>
 
-      {/* Agar doktorlar yo'q bo'lsa — sarlavha qoladi, ammo shu yerda xabar chiqadi */}
       {(!doctor || doctor.length === 0) ? (
         <div className="py-10">
           <p className="text-center text-gray-500 text-[18px]">
@@ -65,7 +64,7 @@ const Doctors = () => {
             modules={[Pagination, Autoplay]}
             breakpoints={{
               0: {
-                slidesPerView: 1.3,
+                slidesPerView: 1,
                 spaceBetween: 10,
               },
               480: {
