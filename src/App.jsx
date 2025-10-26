@@ -70,7 +70,6 @@ const App = () => {
   return (
     <>
       <Seo />
-      <App />
       <RouterProvider router={router} />
     </>
   );
