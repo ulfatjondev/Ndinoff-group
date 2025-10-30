@@ -11,17 +11,21 @@ const languages = [
 
 const Translation = () => {
   const { i18n } = useTranslation();
-  const [lang, setLang] = useState("uz");
+
+  const initialLang = localStorage.getItem("i18nextLng") || "uz";
+
+  const [lang, setLang] = useState(initialLang);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleChange = (selectedLang) => {
     setLang(selectedLang);
     i18n.changeLanguage(selectedLang);
+    localStorage.setItem("i18nextLng", selectedLang);
   };
 
   useEffect(() => {
     i18n.changeLanguage(lang);
-  }, [i18n, lang]);
+  }, [lang, i18n]);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
